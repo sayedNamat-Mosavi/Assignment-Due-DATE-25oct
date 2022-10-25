@@ -43,15 +43,29 @@ df = pd.read_csv(url,index_col=0)
 
 print(df.head(5))
 
+  # Plot line chart of students and their birth months
+plt.figure(figsize=(18,35))
+plt.plot(df['BirthMonth'],df['Name'])
+plt.ylabel('Students')
+plt.xlabel('Birth Month')
+plt.show()
+
+  #Plot the favorite colors of male vs female students on a bar chart.
+sns.countplot(x='FavoriteColor',hue='Gender',data=df)
+sns.set(rc={'figure.figsize':(20,20)})
+plt.title("Bar Chart of favorite colors of male vs female students")
+plt.show()
   # Plot the CGPA of all male students on a histogram with intervals 2.0-2.5, 2.6-3.0, 3.1-3.5, 3.6-4.0.
   
-  import matplotlib.pyplot as plt
-data = [2.7,2.8,2.0,2.2,2.2,2.3,2.4,2.5,2.5,2.5,2.6,2.6,2.8,
-        2.9,3.0,3.1,3.1,3.2,3.3,3.5,3.6,3.7,3.1,4.0,4.0,4.0]
-#this histogram has a range from 1 to 4
-#and 8 different bins
-plt.hist(data, range=(2,4), bins=8)
-plt.show()
+df['CGPA'].plot(kind='hist');
+plt.xlabel("CGPA Interval", labelpad=14)
+
+plt.ylabel("Male Students", labelpad=14)
+
+plt.title("CGPA of All Male Students are there", y=1.015, fontsize=22);
+# ring from 2.0 - 4.0
+plt.xlim([2.0,4.0])
+
   #Bonus points: What other things (insights) you can get from the dataset?
 Data analytics is a process that allows you to extract insights from data sets that could otherwise be either too big or complex to analyze on your own.
 --->Tracking competitors’ keyword rankings to get a better understanding of keywords that work for your company
